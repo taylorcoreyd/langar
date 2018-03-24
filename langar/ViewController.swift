@@ -110,8 +110,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let penNode = SCNNode()
             penNode.name = "PenNode"
-            let penNodeSize = CGFloat(0.05)
-            penNode.position = SCNVector3(x,y,z)
+            let penNodeSize = CGFloat(0.1)
+            penNode.position = SCNVector3(x,y + 0.0001,z)
+            penNode.rotation = SCNVector4(1, 0, 0, -Float.pi / 2)
             let plane = SCNPlane(width: penNodeSize, height: penNodeSize)
             plane.cornerRadius = penNodeSize / 2
             penNode.geometry = plane
@@ -124,9 +125,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 let penModelNode = penScene.rootNode.childNode(withName: "pen", recursively: false)
                 else { return }
             penModelNode.name = "PenModelNode"
-            //penModelNode.scale = SCNVector3(0.012, 0.012, 0.012)
+            penModelNode.scale = SCNVector3(0.012, 0.012, 0.012)
+            penModelNode.rotation = SCNVector4(1, 1, 0, -Float.pi / 2)
             
-            //penNode.addChildNode(penModelNode)
+            penNode.addChildNode(penModelNode)
             sceneView.scene.rootNode.addChildNode(penNode)
             
             objectsHaveBeenPlaced = true
