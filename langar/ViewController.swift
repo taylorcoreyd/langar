@@ -113,6 +113,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let z = hitTestResult.z
             
             let penNode = VirtualObject("art.scnassets/pen/pen.scn", named: "Pen", at: SCNVector3(x, y, z))
+            penNode.setHighlightType(.indicated)
             sceneView.scene.rootNode.addChildNode(penNode)
             
             objectsHaveBeenPlaced = true
