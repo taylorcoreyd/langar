@@ -108,14 +108,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let y = hitTestResult.y
             let z = hitTestResult.z
             
-            guard let penScene = SCNScene(named: "art.scnassets/pen/pen.scn"),
-                let penNode = penScene.rootNode.childNode(withName: "pen", recursively: false)
-                else { return }
-            
+            let penNode = SCNNode()
+            penNode.name = "PenNode"
+            let penNodeSize = CGFloat(0.05)
             penNode.position = SCNVector3(x,y,z)
-            penNode.scale = SCNVector3(0.012, 0.011, 0.011)
-            penNode.rotation = SCNVector4(0, 0, 1, CGFloat.pi / 2)
+            let plane = SCNPlane(width: penNodeSize, height: penNodeSize)
+            plane.cornerRadius = penNodeSize / 2
+            penNode.geometry = plane
+            let material = SCNMaterial()
+            material.diffuse.contents = UIColor.red.withAlphaComponent(0.50)
+            penNode.geometry!.materials = [material]
+            
+            
+            guard let penScene = SCNScene(named: "art.scnassets/pen/pen.scn"),
+                let penModelNode = penScene.rootNode.childNode(withName: "pen", recursively: false)
+                else { return }
+            penModelNode.name = "PenModelNode"
+            //penModelNode.scale = SCNVector3(0.012, 0.012, 0.012)
+            
+            //penNode.addChildNode(penModelNode)
             sceneView.scene.rootNode.addChildNode(penNode)
+            
             objectsHaveBeenPlaced = true
         } else {
             let hitTestResults = sceneView.hitTest(tapLocation)
