@@ -10,7 +10,7 @@ import Foundation
 import SceneKit
 
 class VirtualObject: SCNNode {
-    init(_ model: String, named name: String, sized size: Float, at location: SCNVector3) {
+    init(_ model: String, named name: String, at location: SCNVector3) {
         super.init()
         
         guard let scene = SCNScene(named: model),
@@ -18,24 +18,26 @@ class VirtualObject: SCNNode {
             else { return }
         modelNode.name = name + "ModelNode"
         
-        var xDimension = abs(modelNode.boundingBox.max.x - modelNode.boundingBox.min.x)
-        xDimension = xDimension + (xDimension / 100 * 35)
-        var yDimension = abs(modelNode.boundingBox.max.z - modelNode.boundingBox.min.z)
-        yDimension = yDimension + (yDimension / 100 * 35)
+        let xDimension = abs(modelNode.boundingBox.max.x - modelNode.boundingBox.min.x)
+        let yDimension = abs(modelNode.boundingBox.max.z - modelNode.boundingBox.min.z)
         let nodeSize = max(xDimension, yDimension)
-        
-        self.name = name + "Node"
         self.position = location
         self.rotation = SCNVector4(1, 0, 0, -Float.pi / 2)
-        let plane = SCNPlane(width: CGFloat(xDimension), height: CGFloat(yDimension))
+        
+        let selectorNode = SCNNode()
+        selectorNode.name = name + "SelectorNode"
+        let selectorSizeIncrease = Float(0.35)
+        let plane = SCNPlane(width: CGFloat(xDimension + (xDimension * selectorSizeIncrease)),
+                             height: CGFloat(yDimension + (yDimension * selectorSizeIncrease)))
         plane.cornerRadius = CGFloat(nodeSize)
-        self.geometry = plane
-        self.scale = modelNode.scale
+        selectorNode.geometry = plane
+        selectorNode.scale = modelNode.scale
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.red.withAlphaComponent(0.50)
-        self.geometry!.materials = [material]
+        selectorNode.geometry!.materials = [material]
         
         self.addChildNode(modelNode)
+        self.addChildNode(selectorNode)
     }
     
     required init?(coder aDecoder: NSCoder) {

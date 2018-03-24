@@ -112,7 +112,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let y = hitTestResult.y
             let z = hitTestResult.z
             
-            let penNode = VirtualObject("art.scnassets/pen/pen.scn", named: "Pen", sized: 0.1, at: SCNVector3(x, y, z))
+            let penNode = VirtualObject("art.scnassets/pen/pen.scn", named: "Pen", at: SCNVector3(x, y, z))
             sceneView.scene.rootNode.addChildNode(penNode)
             
             objectsHaveBeenPlaced = true
