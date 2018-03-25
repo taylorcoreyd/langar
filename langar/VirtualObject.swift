@@ -22,24 +22,24 @@ class VirtualObject: SCNNode {
         modelNode.name = name + "ModelNode"
         
         let xDimension = abs(modelNode.boundingBox.max.x - modelNode.boundingBox.min.x)
-        let yDimension = abs(modelNode.boundingBox.max.z - modelNode.boundingBox.min.z)
-        let nodeSize = max(xDimension, yDimension)
+        let zDimension = abs(modelNode.boundingBox.max.z - modelNode.boundingBox.min.z)
         self.position = location
         self.rotation = SCNVector4(1, 0, 0, -Float.pi / 2)
         
         let selectorNode = SCNNode()
         selectorNode.name = name + "SelectorNode"
-        let selectorSizeIncrease = Float(0.35)
-        let plane = SCNPlane(width: CGFloat(xDimension + (xDimension * selectorSizeIncrease)),
-                             height: CGFloat(yDimension + (yDimension * selectorSizeIncrease)))
-        plane.cornerRadius = CGFloat(nodeSize)
+        let plane = SCNPlane(width: CGFloat(xDimension + 1),
+                             height: CGFloat(zDimension + 1))
+        plane.cornerRadius = CGFloat(1)
         selectorNode.geometry = plane
         selectorNode.scale = modelNode.scale
         
+        // fix the modelNode's position
+        modelNode.position.z = (xDimension * modelNode.scale.z) / 2
+        modelNode.position.y = -(zDimension * modelNode.scale.y) / 2
+        
         self.addChildNode(modelNode)
         self.addChildNode(selectorNode)
-        
-        self.setHighlightType(.none)
     }
     
     required init?(coder aDecoder: NSCoder) {
