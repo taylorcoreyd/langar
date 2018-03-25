@@ -16,6 +16,7 @@
 		544E3A29206676A400FA15CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 544E3A27206676A400FA15CB /* LaunchScreen.storyboard */; };
 		544E3A34206676A400FA15CB /* langarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E3A33206676A400FA15CB /* langarTests.swift */; };
 		544E3A3F206676A400FA15CB /* langarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E3A3E206676A400FA15CB /* langarUITests.swift */; };
+		8FCD8C5D206723D8005239FF /* QuizGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCD8C5C206723D8005239FF /* QuizGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		544E3A3A206676A400FA15CB /* langarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = langarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		544E3A3E206676A400FA15CB /* langarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = langarUITests.swift; sourceTree = "<group>"; };
 		544E3A40206676A400FA15CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FCD8C5C206723D8005239FF /* QuizGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				544E3A25206676A400FA15CB /* Assets.xcassets */,
 				544E3A27206676A400FA15CB /* LaunchScreen.storyboard */,
 				544E3A2A206676A400FA15CB /* Info.plist */,
+				8FCD8C5C206723D8005239FF /* QuizGenerator.swift */,
 			);
 			path = langar;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			files = (
 				544E3A21206676A400FA15CB /* ViewController.swift in Sources */,
 				544E3A1D206676A400FA15CB /* AppDelegate.swift in Sources */,
+				8FCD8C5D206723D8005239FF /* QuizGenerator.swift in Sources */,
 				543D129D2066D72C0072C670 /* VirtualPlane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,10 +439,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GDE8WD385G;
+				DEVELOPMENT_TEAM = 8C5F3R597W;
 				INFOPLIST_FILE = langar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cdt.langar;
+				PRODUCT_BUNDLE_IDENTIFIER = "-0xcoding.ffanizza";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -450,10 +454,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GDE8WD385G;
+				DEVELOPMENT_TEAM = 8C5F3R597W;
 				INFOPLIST_FILE = langar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cdt.langar;
+				PRODUCT_BUNDLE_IDENTIFIER = "-0xcoding.ffanizza";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

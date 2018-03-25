@@ -13,11 +13,26 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    // START
+    @IBOutlet var questionTextView: UITextView!
+    @IBOutlet var buttonOne: UIButton!
+    @IBOutlet var buttonTwo: UIButton!
+    @IBOutlet var buttonThree: UIButton!
+    
+    @IBAction func Press(_ sender: UIButton) {
+        print(sender.accessibilityLabel!)
+    }
+    
+    // END
+    
     var planes = [UUID: VirtualPlane]()
     var objectsHaveBeenPlaced = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        QuizGenerator().generateQuizOne(questionTextView: questionTextView, buttonOne: buttonOne, buttonTwo: buttonTwo, buttonThree: buttonThree)
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -60,6 +75,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
 
+    
+    
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -107,6 +124,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let x = hitTestResult.x
             let y = hitTestResult.y
             let z = hitTestResult.z
+            
+            // Quiz 1: item identification
+            //
+            // Choose rand item --> place
+            // Set correct answer (word and number)
+            // Generate question text: "This is a _____"
+            // for (i in range(3)): if i == correct number: button text = word, else word = rand word (check against correct)
             
             let penNode = SCNNode()
             penNode.name = "PenNode"
