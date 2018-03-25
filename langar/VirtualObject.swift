@@ -35,11 +35,11 @@ class VirtualObject: SCNNode {
         selectorNode.scale = modelNode.scale
         
         // fix the modelNode's position
-        modelNode.position.z = (xDimension * modelNode.scale.z) / 2
+        modelNode.position.z = (xDimension * modelNode.scale.z) / 2 - 0.05
         modelNode.position.y = -(zDimension * modelNode.scale.y) / 2
         
         self.addChildNode(modelNode)
-        self.addChildNode(selectorNode)
+        //self.addChildNode(selectorNode)
     }
     
     required init?(coder aDecoder: NSCoder) {

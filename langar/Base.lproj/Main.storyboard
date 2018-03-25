@@ -75,6 +75,10 @@
                         <viewLayoutGuide key="safeArea" id="2FM-iO-yGb"/>
                     </stackView>
                     <connections>
+                        <outlet property="buttonOne" destination="ROS-Em-ewf" id="gT4-Sv-OQe"/>
+                        <outlet property="buttonThree" destination="5PU-nZ-hJK" id="Cl6-uA-Cd3"/>
+                        <outlet property="buttonTwo" destination="SYp-Y6-EvK" id="h6t-oV-Sh0"/>
+                        <outlet property="questionTextView" destination="FPn-Hs-I0d" id="OgO-De-mcR"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                     </connections>
                 </viewController>

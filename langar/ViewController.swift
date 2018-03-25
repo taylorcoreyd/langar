@@ -11,17 +11,26 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-
+    
+    var currentQuiz = Quiz(object: "pen")
+    
     @IBOutlet var sceneView: ARSCNView!
     
-    // START
+    // Interrogation Code
     @IBOutlet var questionTextView: UITextView!
     @IBOutlet var buttonOne: UIButton!
     @IBOutlet var buttonTwo: UIButton!
     @IBOutlet var buttonThree: UIButton!
     
     @IBAction func Press(_ sender: UIButton) {
-        selectedResponse = sender.accessibilityLabel!
+        selectedResponse = sender.title(for: .normal)
+        let result = self.currentQuiz.checkSolution(guess: selectedResponse!)
+        if result {
+            questionTextView.text = "Correct!"
+        } else {
+            questionTextView.text = "Wrong answer."
+        }
+        sceneView.scene.rootNode.childNode(withName: "quizObject", recursively: false)?.removeFromParentNode()
     }
     
     // Variables for correct/selected button label
@@ -31,6 +40,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // Counter for quiz generation (mock random)
     public var quiz = 0
     
+    // ARKit Code
     var planes = [UUID: VirtualPlane]()
     var objectsHaveBeenPlaced = false
     
@@ -50,7 +60,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:
-            #selector(ViewController.placeComponentsInSceneView(withGestureRecognizer:)))
+            #selector(ViewController.placeVirtualObjectInSceneView(withGestureRecognizer:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
     }
     
@@ -118,101 +128,32 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-    func checkSolution() -> Bool {
-        // Check the user's guess against the correct response, return a Bool
-        return selectedResponse == correctResponse
-    }
-    func setQuiz(soln: String) -> String {
-        // Set UI elements for current identification quiz, based on model (soln)
-        let wrongAnswers = ["máy vi tính", "cá vàng", "con sông", "điện thoại", "bàn", "áo sơ mi", "quân dai"]
-        questionTextView.text = "Đây là một _________"
-        // Set the values of the text field, and buttons
-        switch quiz % 3 {
-        case 0: // buttonOne is correct
-            buttonOne.setTitle(soln, for: [])
-            buttonTwo.setTitle(wrongAnswers[quiz%7], for: [])
-            buttonThree.setTitle(wrongAnswers[(quiz+1)%7], for: [])
-            quiz += 1
-            return "buttonOne"
-        case 1: // buttonThree is correct
-            buttonThree.setTitle(soln, for: [])
-            buttonTwo.setTitle(wrongAnswers[quiz%7], for: [])
-            buttonOne.setTitle(wrongAnswers[(quiz+1)%7], for: [])
-            quiz += 1
-            return "buttonThree"
-        case 2: // buttonTwo is correct
-            buttonOne.setTitle(wrongAnswers[quiz%7], for: [])
-            buttonTwo.setTitle(soln, for: [])
-            buttonThree.setTitle(wrongAnswers[(quiz+1)%7], for: [])
-            quiz += 1
-            return "buttonTwo"
-        default:
-            // Inaccessible code
-            return "buttonFour"
-        }
-    }
-    //END
-    
-    @objc func placeComponentsInSceneView(withGestureRecognizer recognizer: UIGestureRecognizer) {
+    @objc func placeVirtualObjectInSceneView(withGestureRecognizer recognizer: UIGestureRecognizer) {
         let tapLocation = recognizer.location(in: sceneView)
         
-        // placeObject(pen)
-        // placeObject(pencil)
-        // placeObject(watch)
+        let hitTestResults = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
         
-        if !objectsHaveBeenPlaced {
-            let hitTestResults = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+        guard let hitTestResult = hitTestResults.first?.worldTransform.columns.3 else { return }
+        let x = hitTestResult.x
+        let y = hitTestResult.y
+        let z = hitTestResult.z
+        
+        let possibleObjects = ["banana", "money", "pen", "flower", "sneaker", "spoon", "tree", "bottle"]
+        
+        let randomIndex = Int(arc4random_uniform(UInt32(possibleObjects.count)))
+        let object = possibleObjects[randomIndex]
+        //let object = possibleObjects[1]
             
-            guard let hitTestResult = hitTestResults.first?.worldTransform.columns.3 else { return }
-            let x = hitTestResult.x
-            let y = hitTestResult.y
-            let z = hitTestResult.z
-            
-            let penNode = VirtualObject("art.scnassets/pen/pen.scn", named: "Pen", at: SCNVector3(x, y, z))
-            penNode.setHighlightType(.indicated)
-            sceneView.scene.rootNode.addChildNode(penNode)
-            
-            objectsHaveBeenPlaced = true
-            
-            // Solution based on model generated
-            var solutions: [String: String] = ["banana": "trái chuối",
-                                               "boot": "khởi động",
-                                               "bottle": "chai",
-                                               "car": "xe hơi",
-                                               "flower": "Hoa",
-                                               "glasses": "kính",
-                                               "money": "tiền bạc",
-                                               "orange": "trái cam",
-                                               "pen": "tờ báo",
-                                               "pencil": "bút chì",
-                                               "shoes": "giày",
-                                               "spoon": "cái thìa",
-                                               "tree": "cây"]
-            var solution = solutions["pen"] // TODO: change hardcode
-            
-            // Set values of quiz (onto UI elements)
-            correctResponse = setQuiz(soln: solution!)
-            
-            // Wait for button press
-            while (selectedResponse == nil) {  }
-            
-            // Response if right/wrong
-            if checkSolution() {
-                questionTextView.text = "CORRECT!"
-            } else {
-                questionTextView.text = "The correct answer was: " + solution!
-                sleep(3)
-            } // Delays to see correct answer ~ response of app
-            sleep(3)
-            
-            // Loop, change model at same location???
-            
-        } else {
-            let hitTestResults = sceneView.hitTest(tapLocation)
-            guard let hitTestResult = hitTestResults.first else { return }
-            if let name = hitTestResult.node.name {
-                print(name)
-            }
-        }
+        let voNode = VirtualObject("art.scnassets/\(object)/\(object).scn", named: object, at: SCNVector3(x, y, z))
+        voNode.name = "quizObject"
+        // penNode.setHighlightType(.indicated)
+        sceneView.scene.rootNode.addChildNode(voNode)
+        
+        self.currentQuiz = Quiz(object: object)
+        let options = self.currentQuiz.getOptions()
+        buttonOne.setTitle(options[0], for: [])
+        buttonTwo.setTitle(options[1], for: [])
+        buttonThree.setTitle(options[2], for: [])
+        questionTextView.text = "Đây là một _________"
     }
 }
