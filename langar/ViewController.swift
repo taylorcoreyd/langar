@@ -21,18 +21,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var buttonThree: UIButton!
     
     @IBAction func Press(_ sender: UIButton) {
-        print(sender.accessibilityLabel!)
+        selectedResponse = sender.accessibilityLabel!
     }
     
-    // END
+    // Variables for correct/selected button label
+    public var correctResponse: String?
+    public var selectedResponse: String?
+    
+    // Counter for quiz generation (mock random)
+    public var quiz = 0
     
     var planes = [UUID: VirtualPlane]()
     var objectsHaveBeenPlaced = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        QuizGenerator().generateQuizOne(questionTextView: questionTextView, buttonOne: buttonOne, buttonTwo: buttonTwo, buttonThree: buttonThree)
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -50,7 +53,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             #selector(ViewController.placeComponentsInSceneView(withGestureRecognizer:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
     }
-        override func viewWillAppear(_ animated: Bool) {
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Create a session configuration
@@ -114,6 +118,41 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    func checkSolution() -> Bool {
+        // Check the user's guess against the correct response, return a Bool
+        return selectedResponse == correctResponse
+    }
+    func setQuiz(soln: String) -> String {
+        // Set UI elements for current identification quiz, based on model (soln)
+        let wrongAnswers = ["máy vi tính", "cá vàng", "con sông", "điện thoại", "bàn", "áo sơ mi", "quân dai"]
+        questionTextView.text = "Đây là một _________"
+        // Set the values of the text field, and buttons
+        switch quiz % 3 {
+        case 0: // buttonOne is correct
+            buttonOne.setTitle(soln, for: [])
+            buttonTwo.setTitle(wrongAnswers[quiz%7], for: [])
+            buttonThree.setTitle(wrongAnswers[(quiz+1)%7], for: [])
+            quiz += 1
+            return "buttonOne"
+        case 1: // buttonThree is correct
+            buttonThree.setTitle(soln, for: [])
+            buttonTwo.setTitle(wrongAnswers[quiz%7], for: [])
+            buttonOne.setTitle(wrongAnswers[(quiz+1)%7], for: [])
+            quiz += 1
+            return "buttonThree"
+        case 2: // buttonTwo is correct
+            buttonOne.setTitle(wrongAnswers[quiz%7], for: [])
+            buttonTwo.setTitle(soln, for: [])
+            buttonThree.setTitle(wrongAnswers[(quiz+1)%7], for: [])
+            quiz += 1
+            return "buttonTwo"
+        default:
+            // Inaccessible code
+            return "buttonFour"
+        }
+    }
+    //END
+    
     @objc func placeComponentsInSceneView(withGestureRecognizer recognizer: UIGestureRecognizer) {
         let tapLocation = recognizer.location(in: sceneView)
         
@@ -134,6 +173,40 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             sceneView.scene.rootNode.addChildNode(penNode)
             
             objectsHaveBeenPlaced = true
+            
+            // Solution based on model generated
+            var solutions: [String: String] = ["banana": "trái chuối",
+                                               "boot": "khởi động",
+                                               "bottle": "chai",
+                                               "car": "xe hơi",
+                                               "flower": "Hoa",
+                                               "glasses": "kính",
+                                               "money": "tiền bạc",
+                                               "orange": "trái cam",
+                                               "pen": "tờ báo",
+                                               "pencil": "bút chì",
+                                               "shoes": "giày",
+                                               "spoon": "cái thìa",
+                                               "tree": "cây"]
+            var solution = solutions["pen"] // TODO: change hardcode
+            
+            // Set values of quiz (onto UI elements)
+            correctResponse = setQuiz(soln: solution!)
+            
+            // Wait for button press
+            while (selectedResponse == nil) {  }
+            
+            // Response if right/wrong
+            if checkSolution() {
+                questionTextView.text = "CORRECT!"
+            } else {
+                questionTextView.text = "The correct answer was: " + solution!
+                sleep(3)
+            } // Delays to see correct answer ~ response of app
+            sleep(3)
+            
+            // Loop, change model at same location???
+            
         } else {
             let hitTestResults = sceneView.hitTest(tapLocation)
             guard let hitTestResult = hitTestResults.first else { return }
