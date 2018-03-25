@@ -1,0 +1,290 @@
+# 3ds Max Wavefront OBJ Exporter v0.94b - (c)2007 guruware
+# File Created: 06.05.2008 14:45:54
+
+newmtl tyre
+	Ns 26.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.1569 0.1569 0.1569
+	Ks 0.1294 0.1294 0.1294
+	Ke 0.0000 0.0000 0.0000
+	map_bump Z:\Car-model\temp\soarer\map\tire_pattern.jpg
+	bump Z:\Car-model\temp\soarer\map\tire_pattern.jpg
+
+newmtl tyreSide
+	Ns 26.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.1569 0.1569 0.1569
+	Ks 0.1294 0.1294 0.1294
+	Ke 0.0000 0.0000 0.0000
+
+newmtl bodyPaint
+	Ns 0.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.7686 0.7686 0.7686
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\body_color.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\body_color.jpg
+	map_refl Z:\Car-model\temp\soarer\map\ref6.bmp
+
+newmtl Glass
+	Ns 30.0000
+	Ni 1.5000
+	d 0.7500
+	Tr 0.7500
+	Tf 0.7500 0.7500 0.7500 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.3569 0.4392 0.4392
+	Ks 0.5216 0.5655 0.5627
+	Ke 0.0000 0.0000 0.0000
+	map_refl Z:\Car-model\temp\soarer\map\Lakerem.jpg
+
+newmtl windowTrim
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.0863 0.0863 0.0863
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl bottom
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl brakeLight
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8667 0.0000 0.0000
+	Ks 0.7000 0.2498 0.2498
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\brakeLight02.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\brakeLight02.jpg
+
+newmtl blackGlass
+	Ns 26.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.1059 0.1059 0.1059
+	Ks 0.0706 0.0706 0.0706
+	Ke 0.0000 0.0000 0.0000
+	map_refl Z:\Car-model\temp\soarer\map\Lakerem.jpg
+
+newmtl interiorLeather
+	Ns 24.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.0706 0.0706 0.0706
+	Ks 0.3733 0.3733 0.3733
+	Ke 0.0000 0.0000 0.0000
+
+newmtl rearLight
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.6300 0.6300 0.6300
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\spotLight02.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\spotLight02.jpg
+
+newmtl sign
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\sign01.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\sign01.jpg
+
+newmtl Metal_Chrome
+	Ns 20.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.4392 0.4392 0.4392
+	Ks 1.3500 1.3500 1.3500
+	Ke 0.0000 0.0000 0.0000
+	map_refl Z:\Car-model\temp\soarer\map\Lakerem.jpg
+
+newmtl interiorBlack
+	Ns 24.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.0706 0.0706 0.0706
+	Ks 0.3733 0.3733 0.3733
+	Ke 0.0000 0.0000 0.0000
+
+newmtl mirror
+	Ns 36.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 1.4000 1.4000 1.4000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl interiorGlass
+	Ns 30.0000
+	Ni 1.5000
+	d 0.7500
+	Tr 0.7500
+	Tf 0.7500 0.7500 0.7500 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.3569 0.4392 0.4392
+	Ks 0.5216 0.5655 0.5627
+	Ke 0.0000 0.0000 0.0000
+
+newmtl frontLogo
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\logoFront01.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\logoFront01.jpg
+
+newmtl wire_154215229
+	Ns 32
+	d 1
+	Tr 1
+	Tf 1 1 1
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.6039 0.8431 0.8980
+	Ks 0.3500 0.3500 0.3500
+
+newmtl signalOrange
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.6300 0.6300 0.6300
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\signal05.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\signal05.jpg
+
+newmtl signalLight
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.6300 0.6300 0.6300
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\signalLight01.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\signalLight01.jpg
+
+newmtl Mag
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\mag.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\mag.jpg
+
+newmtl frontLight
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.6300 0.6300 0.6300
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\frontLight01.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\frontLight01.jpg
+
+newmtl spotLight
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.6300 0.6300 0.6300
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Z:\Car-model\temp\soarer\map\spotLight02.jpg
+	map_Kd Z:\Car-model\temp\soarer\map\spotLight02.jpg
