@@ -32,8 +32,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        QuizGenerator().generateQuizOne(questionTextView: questionTextView, buttonOne: buttonOne, buttonTwo: buttonTwo, buttonThree: buttonThree)
-        
         // Set the view's delegate
         sceneView.delegate = self
         
