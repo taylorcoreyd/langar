@@ -13,11 +13,26 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    // START
+    @IBOutlet var questionTextView: UITextView!
+    @IBOutlet var buttonOne: UIButton!
+    @IBOutlet var buttonTwo: UIButton!
+    @IBOutlet var buttonThree: UIButton!
+    
+    @IBAction func Press(_ sender: UIButton) {
+        print(sender.accessibilityLabel!)
+    }
+    
+    // END
+    
     var planes = [UUID: VirtualPlane]()
     var objectsHaveBeenPlaced = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        QuizGenerator().generateQuizOne(questionTextView: questionTextView, buttonOne: buttonOne, buttonTwo: buttonTwo, buttonThree: buttonThree)
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -60,6 +75,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
 
+    
+    
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
