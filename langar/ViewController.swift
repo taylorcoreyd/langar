@@ -124,26 +124,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     func setQuiz(soln: String) -> String {
         // Set UI elements for current identification quiz, based on model (soln)
-        let wrongAnswers = ["máy vi tính", "cá vàng", "con sông", "điện thoại", "bàn"]
+        let wrongAnswers = ["máy vi tính", "cá vàng", "con sông", "điện thoại", "bàn", "áo sơ mi", "quân dai"]
         questionTextView.text = "Đây là một _________"
         // Set the values of the text field, and buttons
         switch quiz % 3 {
         case 0: // buttonOne is correct
             buttonOne.setTitle(soln, for: [])
-            buttonTwo.setTitle(wrongAnswers[quiz%5], for: [])
-            buttonThree.setTitle(wrongAnswers[(quiz+1)%5], for: [])
+            buttonTwo.setTitle(wrongAnswers[quiz%7], for: [])
+            buttonThree.setTitle(wrongAnswers[(quiz+1)%7], for: [])
             quiz += 1
             return "buttonOne"
         case 1: // buttonThree is correct
             buttonThree.setTitle(soln, for: [])
-            buttonTwo.setTitle(wrongAnswers[quiz%5], for: [])
-            buttonOne.setTitle(wrongAnswers[(quiz+1)%5], for: [])
+            buttonTwo.setTitle(wrongAnswers[quiz%7], for: [])
+            buttonOne.setTitle(wrongAnswers[(quiz+1)%7], for: [])
             quiz += 1
             return "buttonThree"
         case 2: // buttonTwo is correct
-            buttonOne.setTitle(wrongAnswers[quiz%5], for: [])
+            buttonOne.setTitle(wrongAnswers[quiz%7], for: [])
             buttonTwo.setTitle(soln, for: [])
-            buttonThree.setTitle(wrongAnswers[(quiz+1)%5], for: [])
+            buttonThree.setTitle(wrongAnswers[(quiz+1)%7], for: [])
             quiz += 1
             return "buttonTwo"
         default:
@@ -190,10 +190,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             objectsHaveBeenPlaced = true
             
             // Solution based on model generated
-            var soln = "tờ báo" // TODO: change hardcode
+            var solutions: [String: String] = ["banana": "trái chuối",
+                                               "boot": "khởi động",
+                                               "bottle": "chai",
+                                               "car": "xe hơi",
+                                               "flower": "Hoa",
+                                               "glasses": "kính",
+                                               "money": "tiền bạc",
+                                               "orange": "trái cam",
+                                               "pen": "tờ báo",
+                                               "pencil": "bút chì",
+                                               "shoes": "giày",
+                                               "spoon": "cái thìa",
+                                               "tree": "cây"]
+            var solution = solutions["pen"] // TODO: change hardcode
             
             // Set values of quiz (onto UI elements)
-            correctResponse = setQuiz(soln: soln)
+            correctResponse = setQuiz(soln: solution!)
             
             // Wait for button press
             while (selectedResponse == nil) {  }
@@ -202,7 +215,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if checkSolution() {
                 questionTextView.text = "CORRECT!"
             } else {
-                questionTextView.text = "The correct answer was: " + soln
+                questionTextView.text = "The correct answer was: " + solution!
                 sleep(3)
             } // Delays to see correct answer ~ response of app
             sleep(3)
