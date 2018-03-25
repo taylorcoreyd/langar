@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		543D129D2066D72C0072C670 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543D129C2066D72C0072C670 /* VirtualPlane.swift */; };
+		543D129F2066F2A00072C670 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543D129E2066F2A00072C670 /* VirtualObject.swift */; };
 		544E3A1D206676A400FA15CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E3A1C206676A400FA15CB /* AppDelegate.swift */; };
 		544E3A1F206676A400FA15CB /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 544E3A1E206676A400FA15CB /* art.scnassets */; };
 		544E3A21206676A400FA15CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E3A20206676A400FA15CB /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		543D129C2066D72C0072C670 /* VirtualPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		543D129E2066F2A00072C670 /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
 		544E3A19206676A400FA15CB /* langar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = langar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		544E3A1C206676A400FA15CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		544E3A1E206676A400FA15CB /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				544E3A1C206676A400FA15CB /* AppDelegate.swift */,
 				544E3A1E206676A400FA15CB /* art.scnassets */,
 				544E3A20206676A400FA15CB /* ViewController.swift */,
+				543D129E2066F2A00072C670 /* VirtualObject.swift */,
 				543D129C2066D72C0072C670 /* VirtualPlane.swift */,
 				544E3A22206676A400FA15CB /* Main.storyboard */,
 				544E3A25206676A400FA15CB /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				543D129F2066F2A00072C670 /* VirtualObject.swift in Sources */,
 				544E3A21206676A400FA15CB /* ViewController.swift in Sources */,
 				544E3A1D206676A400FA15CB /* AppDelegate.swift in Sources */,
 				543D129D2066D72C0072C670 /* VirtualPlane.swift in Sources */,
